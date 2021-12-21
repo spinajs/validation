@@ -97,7 +97,7 @@ export class DataValidator extends AsyncModule {
             if (!schema) {
                 return [false, [{
                     keyword: "empty_schema",
-                    dataPath: "data",
+                    dataPath: "./",
                     schemaPath: "",
                     params: "data"
                 }]];
@@ -113,7 +113,7 @@ export class DataValidator extends AsyncModule {
             if (!data) {
                 return [false, [{
                     keyword: "invalid_argument",
-                    dataPath: "data",
+                    dataPath: "./",
                     schemaPath: "",
                     params: "data"
                 }]]
