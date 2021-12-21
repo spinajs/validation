@@ -88,8 +88,8 @@ export class DataValidator extends AsyncModule {
      * @return { array : [boolean, ValidationError[]]} [0] true if data is valid, false otherwise, [1] list of all errors. If
      *                                                 set in config validation.allErrors is set to false, only firs error is returned
      */
-    public tryValidate(schema: object | string | boolean, data: any): [boolean, ValidationError[]]
-    public tryValidate(schemaOrData: object | string | boolean, data?: any): [boolean, ValidationError[]] {
+    public tryValidate(schema: object | string, data: any): [boolean, ValidationError[]]
+    public tryValidate(schemaOrData: object | string, data?: any): [boolean, ValidationError[]] {
 
         if (arguments.length === 1) {
             const schema = Reflect.getMetadata(SCHEMA_SYMBOL, schemaOrData);
@@ -119,7 +119,16 @@ export class DataValidator extends AsyncModule {
                 }]]
             }
 
-            let schema = schemaOrData || Reflect.getMetadata(SCHEMA_SYMBOL, schemaOrData);
+            let schema = null;
+
+            if (typeof schemaOrData === "object") {
+                schema = schemaOrData;
+            } else if (typeof schemaOrData === 'string') {
+                schema = this.Validator.getSchema(schemaOrData);
+            } else {
+                schema = Reflect.getMetadata(SCHEMA_SYMBOL, schemaOrData);
+            }
+
             if (!schema) {
                 return [false, [{
                     keyword: "empty_schema",
