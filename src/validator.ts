@@ -119,7 +119,17 @@ export class DataValidator extends AsyncModule {
                 }]]
             }
 
-            const result = this.Validator.validate(schemaOrData, data);
+            let schema = schemaOrData || Reflect.getMetadata(SCHEMA_SYMBOL, schemaOrData);
+            if (!schema) {
+                return [false, [{
+                    keyword: "empty_schema",
+                    dataPath: "./",
+                    schemaPath: "",
+                    params: "data"
+                }]];
+            }
+
+            const result = this.Validator.validate(schema, data);
             if (!result) {
                 return [false, this.Validator.errors]
             }
