@@ -162,8 +162,8 @@ export class DataValidator extends AsyncModule {
      * @param  {Any} data to be validated
      * @throws {InvalidArgumen | ValidationFailed }
      */
-    public validate(schema: object | string | boolean, data: any): void;
-    public validate(schemaOrData: object | string | boolean, data?: any): void {
+    public validate(schema: object | string , data: any): void;
+    public validate(schemaOrData: object | string , data?: any): void {
         const [isValid, errors] = this.tryValidate(schemaOrData, data);
         if (!isValid) {
             switch (errors[0].keyword) {
