@@ -1,6 +1,6 @@
 {
   "name": "@spinajs/validation",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "validation library for spinajs framework",
   "main": "lib/index.js",
   "private": false,
@@ -40,10 +40,10 @@
     "@spinajs/di": "^1.1.0",
     "@spinajs/exceptions": "^1.0.4",
     "@spinajs/log": "^1.0.10",
-    "ajv": "^6.12.2",
+    "ajv": "^8.8.2",
     "ajv-formats": "^2.1.1",
     "ajv-keywords": "^5.1.0",
-    "ajv-merge-patch": "^4.1.0"
+    "ajv-merge-patch": "^5.0.1"
   },
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
@@ -82,6 +82,6 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-no-unused-expression-chai": "^0.1.4",
     "typedoc": "^0.14.2",
-    "typescript": "^3.7.3"
+    "typescript": "^4.2.3"
   }
 }
